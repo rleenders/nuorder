@@ -1,24 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Typeahead from './Typeahead';
+import fetchIssues from './api'
 import './App.css';
 
 function App() {
+  const [typeaheadValue, setTypeaheadValue] = useState('');
+  const [options, setOptions] = useState([]);
+  const handleChange = async (event) => {
+    setTypeaheadValue(event.target.value)
+    const result = await fetchIssues(event.target.value);
+    setOptions(result.items)
+  }
+
+  const handleSubmit = async (value) => {
+    setTypeaheadValue(options[value].title);
+    const result = await fetchIssues(options[value].title);
+    setOptions(result.items)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Typeahead
+        options={options}
+        typeaheadValue={typeaheadValue}
+        onChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
     </div>
   );
 }

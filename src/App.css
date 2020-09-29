@@ -1,38 +1,89 @@
-.App {
-  text-align: center;
+body {
+  background: #f3f3f2;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.typeahead {
+  margin: 10rem auto 2rem auto;
+  /* text-align: right; */
+  position: relative;
+  background-color: #f3f3f2;
+  padding-bottom: 2rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.typeahead div.container {
+  width: 90%;
+  margin: auto;
+}
+
+.typeahead-text {
+  border: 4px solid block;
+  border-radius: 2px;
+  font-size: 2rem;
+  padding-top: 1rem;
+  width: 100%;
+  transition: width 0.3s;
+  padding: 0px;
+  border-color: #a1a099;
+}
+.typeahead-text:focus {
+  outline: none;
+  border: 2px solid #a1a099;
+}
+
+ul.options-list {
+  display: block;
+  list-style: none;
+  width: 90%;
+  transition: width 0.3s;
+  margin: auto;
+  position: relative;
+  padding: 0px;
+}
+
+ul.options-list li {
+  display: block;
+  background: white;
+  margin: 10px auto;
+  padding: 10px;
+  font-size: 1.2rem;
+  /* width: 100%; */
+
+  border-radius: 2px;
+  border-right: 2px grey solid;
+  border-bottom: 2px grey solid;
+}
+ul.options-list li:hover span.title {
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s all;
+}
+
+ul.options-list li.active span.title {
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s all;
+}
+
+ul.options-list li.active {
+  background: whitesmoke;
+  transition: 0.3s all;
+}
+
+ul.options-list li:hover {
+  background: whitesmoke;
+  transition: 0.3s all;
+}
+
+.no-options {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+span.tag {
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-right: 1rem;
+  background-color: #b2e5c0;
 }
